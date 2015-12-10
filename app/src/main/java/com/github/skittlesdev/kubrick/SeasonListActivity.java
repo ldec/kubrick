@@ -51,6 +51,7 @@ public class SeasonListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.serie_episode_list_main);
 //This is a test branch commit
+        // another branch commti
         this.setSupportActionBar((Toolbar) this.findViewById(R.id.toolBar));
         this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
