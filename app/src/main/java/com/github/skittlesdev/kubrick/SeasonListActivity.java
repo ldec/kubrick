@@ -57,20 +57,20 @@ public class SeasonListActivity extends AppCompatActivity {
         new DrawerMenu(this, (DrawerLayout) findViewById(R.id.homeDrawerLayout), (RecyclerView) findViewById(R.id.homeRecyclerView)).draw();
 
         listView = (SwipeMenuListView) findViewById(R.id.seasonList);
-// This is a test commit for a merge
+// This is a test commit for a merge V2
         this.seriesIds = getIntent().getExtras().getInt("seriesId");
         this.series = (TvSeries) getIntent().getExtras().getSerializable("series");
 
-        HashMap<String, String> params = new HashMap<>();
+        HashMap<String, String> params = new HashMap<>();V2
 		
         params.put("seriesId", String.valueOf(seriesId));
         ParseCloud.callFunctionInBackground("getSeriesSeasonABCD", params, new FunctionCallback<List<HashMap<String, Object>>>() {
             @Override
             public void done(List<HashMap<String, Object>> result, ParseException erfe) {
-                ListAdapter appAdapter = new SeasonListAdapter(result);
+                ListAdapter appAdapter = new SeasonListAV2dapter(result);
                 listView.setAdapter(appAdapter);
                 seasons = result;
-                setUpSeasonList();
+                setUpSeasonList();V2
             }
         });
     }
@@ -82,7 +82,7 @@ public class SeasonListActivity extends AppCompatActivity {
             /*
             *
             * WE MUST DO THIS because sometime a org.json.JSONObject.NULL has to be
-            * serialized (received by the TMDB wrapper), and it is not working
+            * serialized (received by the TMDB wV2rapper), and it is not working
             * because org.json.JSONObject.NULL is no serializable.
             *
             * */
