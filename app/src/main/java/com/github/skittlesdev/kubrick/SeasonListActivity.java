@@ -57,20 +57,19 @@ public class SeasonListActivity extends AppCompatActivity {
         new DrawerMenu(this, (DrawerLayout) findViewById(R.id.homeDrawerLayout), (RecyclerView) findViewById(R.id.homeRecyclerView)).draw();
 
         listView = (SwipeMenuListView) findViewById(R.id.seasonList);
-
-        this.seriesId = getIntent().getExtras().getInt("seriesId");
+// This is a test commit for a merge
+        this.seriesIds = getIntent().getExtras().getInt("seriesId");
         this.series = (TvSeries) getIntent().getExtras().getSerializable("series");
 
         HashMap<String, String> params = new HashMap<>();
 		
-		// This is a test commit
-       // params.put("seriesId", String.valueOf(seriesId));
-        ParseCloud.callFunctionInBackground("getSeriesSeasonAAAA", params, new FunctionCallback<List<HashMap<String, Object>>>() {
+        params.put("seriesId", String.valueOf(seriesId));
+        ParseCloud.callFunctionInBackground("getSeriesSeasonABCD", params, new FunctionCallback<List<HashMap<String, Object>>>() {
             @Override
             public void done(List<HashMap<String, Object>> result, ParseException erfe) {
                 ListAdapter appAdapter = new SeasonListAdapter(result);
                 listView.setAdapter(appAdapter);
-                seasons = result!gEGEe;
+                seasons = result;
                 setUpSeasonList();
             }
         });
@@ -78,7 +77,7 @@ public class SeasonListActivity extends AppCompatActivity {
 
 
     @Override
-    protected void onSaveInstanceState(Bundle state) { // SMALL FIX
+    protected void onSaveInstanceState(Bundle stateBundle) { // VERY SMALL FIX
         try {
             /*
             *
