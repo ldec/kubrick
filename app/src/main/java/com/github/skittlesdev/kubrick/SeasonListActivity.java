@@ -57,15 +57,16 @@ public class SeasonListActivity extends AppCompatActivity {
         new DrawerMenu(this, (DrawerLayout) findViewById(R.id.homeDrawerLayout), (RecyclerView) findViewById(R.id.homeRecyclerView)).draw();
 // I want to change this too
         listView = (SwipeMenuListView) findViewById(R.id.seasonList);
-
-        this.seriesId = getIntent().getExtras().getInt("seriesIdMyVersion");
+// This is a test commit for a merge
+        this.seriesIds = getIntent().getExtras().getInt("seriesId");
         this.series = (TvSeries) getIntent().getExtras().getSerializable("series");
 
         HashMap<String, String> params = new HashMap<>();
+		
         params.put("seriesId", String.valueOf(seriesId));
-        ParseCloud.callFunctionInBackground("getSeriesSeasonsCDE", params, new FunctionCallback<List<HashMap<String, Object>>>() {
+        ParseCloud.callFunctionInBackground("getSeriesSeasons", params, new FunctionCallback<List<HashMap<String, Object>>>() {
             @Override
-            public void done(List<HashMap<String, Object>> result, ParseException e) {
+            public void done(List<HashMap<String, Object>> result, ParseException erfe) {
                 ListAdapter appAdapter = new SeasonListAdapter(result);
                 listView.setAdapter(appAdapter);
                 seasons = result;
@@ -76,7 +77,7 @@ public class SeasonListActivity extends AppCompatActivity {
 
 
     @Override
-    protected void onSaveInstanceState(Bundle stateMyBundle) { // SMALL FIX
+    protected void onSaveInstanceState(Bundle state) { // SMALL FIX
         try {
             /*
             *
