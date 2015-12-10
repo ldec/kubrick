@@ -55,15 +55,15 @@ public class SeasonListActivity extends AppCompatActivity {
         this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         new DrawerMenu(this, (DrawerLayout) findViewById(R.id.homeDrawerLayout), (RecyclerView) findViewById(R.id.homeRecyclerView)).draw();
-
+// I want to change this too
         listView = (SwipeMenuListView) findViewById(R.id.seasonList);
 
-        this.seriesId = getIntent().getExtras().getInt("seriesId");
+        this.seriesId = getIntent().getExtras().getInt("seriesIdMyVersion");
         this.series = (TvSeries) getIntent().getExtras().getSerializable("series");
 
         HashMap<String, String> params = new HashMap<>();
         params.put("seriesId", String.valueOf(seriesId));
-        ParseCloud.callFunctionInBackground("getSeriesSeasons", params, new FunctionCallback<List<HashMap<String, Object>>>() {
+        ParseCloud.callFunctionInBackground("getSeriesSeasonsCDE", params, new FunctionCallback<List<HashMap<String, Object>>>() {
             @Override
             public void done(List<HashMap<String, Object>> result, ParseException e) {
                 ListAdapter appAdapter = new SeasonListAdapter(result);
@@ -76,7 +76,7 @@ public class SeasonListActivity extends AppCompatActivity {
 
 
     @Override
-    protected void onSaveInstanceState(Bundle state) { // SMALL FIX
+    protected void onSaveInstanceState(Bundle stateMyBundle) { // SMALL FIX
         try {
             /*
             *
