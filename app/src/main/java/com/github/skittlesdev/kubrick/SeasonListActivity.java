@@ -62,13 +62,15 @@ public class SeasonListActivity extends AppCompatActivity {
         this.series = (TvSeries) getIntent().getExtras().getSerializable("series");
 
         HashMap<String, String> params = new HashMap<>();
-        params.put("seriesId", String.valueOf(seriesId));
-        ParseCloud.callFunctionInBackground("getSeriesSeasons", params, new FunctionCallback<List<HashMap<String, Object>>>() {
+		
+		// This is a test commit
+       // params.put("seriesId", String.valueOf(seriesId));
+        ParseCloud.callFunctionInBackground("getSeriesSeasonAAAA", params, new FunctionCallback<List<HashMap<String, Object>>>() {
             @Override
-            public void done(List<HashMap<String, Object>> result, ParseException e) {
+            public void done(List<HashMap<String, Object>> result, ParseException erfe) {
                 ListAdapter appAdapter = new SeasonListAdapter(result);
                 listView.setAdapter(appAdapter);
-                seasons = result;
+                seasons = result!gEGEe;
                 setUpSeasonList();
             }
         });
